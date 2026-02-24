@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punto de Venta Ágil - Argentina</title>
+    <!-- Google Fonts for Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Ionicons for beautiful lightweight icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav glass-panel">
+        <div class="brand">
+            <div class="logo-icon"><ion-icon name="bag-handle-outline"></ion-icon></div>
+            <h1>SmartPOS <span>ARG</span></h1>
+        </div>
+        <div class="nav-links">
+            <button class="nav-btn active"><ion-icon name="cart-outline"></ion-icon> Ventas</button>
+            <button class="nav-btn"><ion-icon name="analytics-outline"></ion-icon> Arqueo / Caja</button>
+            <button class="nav-btn"><ion-icon name="cube-outline"></ion-icon> Inventario</button>
+        </div>
+        <div class="user-profile">
+            <div class="clock" id="live-clock">10:45 AM</div>
+            <div class="avatar"><ion-icon name="person-outline"></ion-icon></div>
+            <span>Caja 1 - Lucas</span>
+        </div>
+    </nav>
+
+    <!-- Main Layout Grid -->
+    <main class="pos-layout">
+
+        <!-- Left Column: Products -->
+        <section class="products-section">
+            <div class="search-bar glass-panel">
+                <ion-icon name="search-outline"></ion-icon>
+                <input type="text" id="productSearch" placeholder="Buscar producto, cod. barra o combo... (Ctrl+B)">
+                <button class="scan-btn"><ion-icon name="barcode-outline"></ion-icon></button>
+            </div>
+
+            <!-- Categories Tabs -->
+            <div class="categories" id="categoryTabs">
+                <button class="cat-chip active" data-cat="all">Todos</button>
+                <button class="cat-chip" data-cat="almacen">Almacén</button>
+                <button class="cat-chip" data-cat="bebidas">Bebidas</button>
+                <button class="cat-chip" data-cat="combos">Promociones y Combos</button>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Products injected by JS -->
+            </div>
+        </section>
+
+        <!-- Right Column: Cart & Checkout -->
+        <aside class="cart-section glass-panel">
+            <div class="cart-header">
+                <h2>Caja Actual <span class="badge" id="cartCount">0</span></h2>
+                <button class="clear-btn" id="clearCartBtn" title="Vaciar"><ion-icon name="trash-outline"></ion-icon></button>
+            </div>
+
+            <div class="cart-items-container" id="cartItems">
+                <!-- Empty State -->
+                <div class="empty-cart" id="emptyCartMessage">
+                    <ion-icon name="basket-outline"></ion-icon>
+                    <p>Agrega productos para cobrar</p>
+                </div>
+            </div>
+
+            <div class="cart-summary">
+                
+                <!-- AFIP / Receipt Toggle -->
+                <div class="billing-type-box">
+                    <label class="toggle-container">
+                        <span class="label-text">Tipo de Comprobante</span>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="afipToggle">
+                            <span class="slider"></span>
+                        </div>
+                    </label>
+                    <div class="billing-status" id="billingStatusText">
+                        <ion-icon name="receipt-outline"></ion-icon> Comprobante Interno (No fiscal)
+                    </div>
+                </div>
+
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="subtotalAmount">$ 0.00</span>
+                </div>
+                <div class="summary-row" id="ivaRow" style="display: none; color: var(--accent-color);">
+                    <span>IVA (21%)</span>
+                    <span id="ivaAmount">$ 0.00</span>
+                </div>
+                <div class="summary-row total-row">
+                    <span>Total</span>
+                    <span id="totalAmount">$ 0.00</span>
+                </div>
+            </div>
+
+            <div class="payment-actions">
+                <button class="pay-btn cash" id="payCashBtn">
+                    <ion-icon name="cash-outline"></ion-icon>
+                    Cobrar Efectivo
+                </button>
+                <button class="pay-btn card" id="payCardBtn">
+                    <ion-icon name="card-outline"></ion-icon>
+                    Medios Digitales / Tarjeta
+                </button>
+            </div>
+        </aside>
+
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
